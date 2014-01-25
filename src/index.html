@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html ng-app="inteiro" ng-controller="AppCtrl" lang="en">
+<html ng-app="openqi" ng-controller="AppCtrl" lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title ng-cloak>{{pageTitle}} | Inteiro</title>
+        <title ng-cloak>{{pageTitle}} | Open QI</title>
 
         <!-- fav icon -->
         <!--<link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />-->
@@ -13,20 +13,12 @@
         <!-- !CSS -->
 
         <!-- analytics -->
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-71171-37', 'adi.do');
-            ga('send', 'pageview');
-        </script>
+        
         <!-- !analytics -->
 
     </head>
     
-    <body class="area-{{pageTitle | lowercase}}">
+    <body>
         
         <!-- growls -->
         <div growl></div>
@@ -35,71 +27,24 @@
         <!-- header -->
         <header>
             <div class="row">
-            
-                <div class="col-md-2 col-xs-6">
-                    <div class="logo pull-left">
-                        <i class="fa fa-2x"></i>
-                    </div>
-                    <div class="btn-group pull-left visible-xs visible-sm">
-                        <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">&#9776;</a> 
-                        <ul class="dropdown-menu" role="menu">
-                            <li ng-repeat="item in mainMenuItems" ui-route="{{item.url}}" ng-class="{active: $uiRoute}">
-                                <a href="/#{{item.url}}">{{item.name}}</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="col-md-8 hidden-sm hidden-xs">
-                    <nav class="navbar navbar-default" role="navigation">
-                        <ul class="nav navbar-nav">
-                            <li class="nav-item" ng-repeat="item in mainMenuItems" ui-route="{{item.url}}" ng-class="{active: $uiRoute}">
-                                <a href="/#{{item.url}}" ng-cloak>{{item.name}}</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                
-                <div class="col-md-2 col-xs-6">
-                    <div class="user pull-right dropdown-toggle" data-toggle="dropdown">
-                        <img alt="" src="assets/images/user.jpg">
-                    </div>
-
-                    <a class="btn btn-default settings pull-right dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-2x fa-cog"></i>
-                        <span class="caret"></span>
-                    </a>
-
-                    <ul class="dropdown-menu pull-right" role="menu">
-                        <li ng-repeat="item in accountMenuItems" ui-route="{{item.url}}" ng-class="{active: $uiRoute}">
-                            <a href="/#{{item.url}}">{{item.name}}</a>
-                        </li>
-                    </ul>
-                </div>
 
             </div>
-
         </header>
         <!-- !header -->
 
         <!-- view -->
-        <div class="container at-view-slide-in-top at-view-slide-out-top" ui-view="main"></div>
+        <div class="container" ui-view="main"></div>
         <!-- !view -->
         
         <!-- footer -->
         <footer>
-            <small>Copyright &copy; Adido Products 2013</small>
+            <small>Copyright &copy; OpenQI 2013</small>
         </footer>
         <!-- !footer -->
         
         <!-- javascript -->
         <% scripts.forEach( function ( file ) { %><script type="text/javascript" src="<%= file %>"></script><% }); %>
         <!-- !javascript -->
-        
-        <!-- google visualisation -->
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <script>google.load('visualization', '1.0', {'packages':['corechart', 'table']});</script>
-        <!-- !google visualisation -->
 
     </body>
 

@@ -8,16 +8,10 @@
     "angular-animate": "1.2.7",
     "angular-resource": "1.2.7",
     "bootstrap": "latest",
-    "angular-bootstrap": "latest",
     "angular-ui-router": "latest",
-    "angular-ui-sortable": "latest",
-    "angular-ui-utils": "latest",
-    "angular-ui-calendar": "latest",
     "font-awesome": "latest",
     "angular-growl": "latest",
-    "momentjs": "latest",
-    "bootstrap3-typeahead": "latest",
-    "angular-loading-bar": "latest"
+    "momentjs": "latest"
   },
   "dependencies": {},
   "resolutions": {

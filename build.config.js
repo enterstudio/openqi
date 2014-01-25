@@ -63,19 +63,11 @@ module.exports = {
             'vendor/jquery-ui/ui/minified/jquery-ui.min.js',
             'vendor/angular/angular.js',
             'vendor/angular-animate/angular-animate.min.js',
-            
             'vendor/angular-resource/angular-resource.min.js',
-
             'vendor/angular-growl/build/angular-growl.min.js',
-            'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
-            'vendor/bootstrap3-typeahead/bootstrap3-typeahead.js',
             'vendor/angular-ui-router/release/angular-ui-router.min.js',
-            'vendor/angular-ui-sortable/src/sortable.js',
-            'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
             'vendor/angular-ui-utils/ui-utils.js',
-            'vendor/angular-ui-calendar/src/calendar.js',
-            'vendor/fullcalendar/fullcalendar.min.js',
-            /*'vendor/fullcalendar/gcal.js',*/
+            'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
             'vendor/momentjs/min/moment.min.js',
             'vendor/angular-loading-bar/build/loading-bar.js'
         ],

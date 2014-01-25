@@ -1,7 +1,7 @@
 describe('AppCtrl', function() {
     describe('isCurrentUrl', function() {
         var AppCtrl, $location, $scope;
-        beforeEach(module('inteiro'));
+        beforeEach(module('openqi'));
         beforeEach(inject(function($controller, _$location_, $rootScope) {
             $location = _$location_;
             $scope = $rootScope.$new();

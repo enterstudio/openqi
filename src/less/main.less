@@ -61,99 +61,11 @@ body, html {background-color: #dbdce1;}
 /*------------------------------------*\
    STRUCTURE
 \*------------------------------------*/
-    
-/* header */
-header {
-    background-color: #fff;
-    height: 40px;
-    border-bottom: 1px solid #c6c7cc;
-    box-shadow: 0px 0px 0px 1px #ced0d5;
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    z-index: 10;
-}
 
-    header .logo {
-        width: 70px;
-        height: 39px;
-        color: #fff;
-        text-align: center;
-        line-height: 48px;
-        vertical-align: top;
-    }
-        body.area-dashboard header .logo {background: @dashboard-colour;}
-            body.area-dashboard header .logo i.fa:before {content: "\f0e4";}
-        body.area-timesheets header .logo {background: @timesheets-colour;}
-            body.area-timesheets header .logo i.fa:before {content: "\f017";}
-        body.area-reports header .logo {background: @reports-colour;}
-            body.area-reports header .logo i.fa:before {content: "\f080";}
-        body.area-management header .logo {background: @management-colour;}
-            body.area-management header .logo i.fa:before {content: "\f085";}
-        body.area-account header .logo {background: @account-colour;}
-            body.area-account header .logo i.fa:before {content: "\f007";}
 
-        header .btn-group .dropdown-toggle {
-            background: transparent; 
-            border: 0px;
-            border-left:1px solid #e0e1e4;
-            border-radius: 0px;
-            font-size: 26px; 
-            font-weight: bold;
-            padding: 1px 10px;
-        }
-            header .btn-group .dropdown-toggle:hover {background: #ebebeb;}
-    
-    header .navbar {
-        text-align: center; 
-        height: 39px; 
-        border: 0px; 
-        min-height: 39px; 
-        background: #fff; 
-        border-radius: 0px;
-        margin: 0px;
-    }
-        header .navbar .nav {margin: 0px auto; display: inline-block; float: none;}
-            header .navbar .nav .nav-item {}
-                header .navbar .nav .nav-item > a {padding: 10px 15px 9px 15px;}
-                    header .navbar .nav .nav-item > a:hover {color: #333; background: #eee;}
-                    header .navbar .nav .nav-item.active > a {color: #fff;}
-                        body.area-dashboard header .navbar .nav .nav-item.active > a {background: @dashboard-colour;}
-                        body.area-timesheets header .navbar .nav .nav-item.active > a {background: @timesheets-colour;}
-                        body.area-reports header .navbar .nav .nav-item.active > a {background: @reports-colour;}
-                        body.area-management header .navbar .nav .nav-item.active > a {background: @management-colour;}
-                        body.area-account header .navbar .nav .nav-item.active > a {background: @account-colour;}
-
-    header .settings {
-        background: transparent;
-        border: 0px;
-        border-radius: 0px;
-        height: 39px;
-    }
-    header .user {border-left:1px solid #e0e1e4;}
-        header .user img {width: 40px; height: 39px;}
-
-/* forms */
-.form-category-group {border-top: 1px solid #eee; border-bottom:1px solid #eee; margin-bottom: 20px; padding: 10px;}
-
-/* item lists */
-.item-list {margin: 0px;}
-.item-list .list-group-item {border-width: 1px 0;}
-    .item-list .list-group-item.link {padding-top: 0px; padding-bottom: 0px; margin-left: 0px; margin-right: 0px;}
-        .item-list .list-group-item.link > a {padding: 10px 0px;}
-            .item-list .list-group-item.link > a:hover {text-decoration: none;}
-    .item-list .list-group-item:first-child {border-top-right-radius: 0; border-top-left-radius: 0;}
-    .item-list .list-group-item:last-child {border-bottom: 0px;}
-    .item-list .list-group-item:hover,
-    .item-list .list-group-item.selected {background: #f5f5f5}
-    .item-list .list-group-item .item-menu {}
-        .item-list .list-group-item.link .item-menu {padding: 9px 0px;}
-        .item-list .list-group-item:hover .item-menu,
-        .item-list .list-group-item.selected .item-menu {display: inline !important;}
-        .item-list .list-group-item .item-menu .btn {}
 
 /* footer */
-footer {text-align: center; height: 40px; line-height: 40px; vertical-align: middle;}
+footer {text-align: center; height: 40px; line-height: 40px; vertical-align: middle;
 
 
 /*------------------------------------*\
@@ -167,49 +79,11 @@ footer {text-align: center; height: 40px; line-height: 40px; vertical-align: mid
    MODULE SPECIFIC
 \*------------------------------------*/
 
-/* dashboard */
-@import '../app/dashboard/dashboard.less';
-    @import '../app/dashboard/configure/dashboard.configure.less';
-
-/* timesheets */
-@import '../app/timesheets/timesheets.less';
-    @import '../app/timesheets/calendar/timesheets.calendar.less';
-    @import '../app/timesheets/configure/timesheets.configure.less';
-
-/* reports */
-@import '../app/reports/reports.less';
-    @import '../app/reports/configure/reports.configure.less';
-    @import '../app/reports/show/reports.show.less';
-
-/* management */
-@import '../app/management/management.less';
-    @import '../app/management/list/management.list.less';
-        @import '../app/management/list/configure/management.list.configure.less';
-        @import '../app/management/list/delete/management.list.delete.less';
-
-/* account */
-@import '../app/account/account.less';
-    @import '../app/account/settings/account.settings.less';
-
 
 /*------------------------------------*\
    MODULE COMMON
 \*------------------------------------*/
 
-/* ctPagination */
-@import '../common/ctPagination/ctPagination.less';
-
-/* ctPreviewPane */
-@import '../common/ctPreviewPane/ctPreviewPane.less';
-
-/* ctManageChildren */
-@import '../common/ctManageChildren/ctManageChildren.less';
-
-/* ctDateRange */
-@import '../common/ctDateRange/ctDateRange.less';
-
-/* ctReportRender */
-@import '../common/ctReportRender/ctReportRender.less';
 
 /* growl */
 .growl {z-index: 9999; top: 50px;}
@@ -223,5 +97,3 @@ footer {text-align: center; height: 40px; line-height: 40px; vertical-align: mid
    VIEW SPECIFIC
 \*------------------------------------*/
 
-/* left nav */
-@import '../common/views/left-nav.less';
