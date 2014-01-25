@@ -27,7 +27,34 @@
         <!-- header -->
         <header>
             <div class="row">
+                <div class="col-md-2">
+                    <div class="logo">Open QI</div>
+                </div>
+                <div class="menu col-md-8">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item" ng-repeat="item in mainMenuItems" ui-route="{{item.url}}" ng-class="{active: $uiRoute}">
+                                <a href="/#{{item.url}}" ng-cloak>{{item.name}}</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-2">
+                    <div class="user pull-right dropdown-toggle" data-toggle="dropdown">
+                        <img alt="" src="assets/images/user.jpg">
+                    </div>
 
+                    <a class="btn btn-default settings pull-right dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-2x fa-cog"></i>
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu pull-right" role="menu">
+                        <li ng-repeat="item in accountMenuItems" ui-route="{{item.url}}" ng-class="{active: $uiRoute}">
+                            <a href="/#{{item.url}}">{{item.name}}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </header>
         <!-- !header -->
@@ -49,3 +76,6 @@
     </body>
 
 </html>
+
+
+

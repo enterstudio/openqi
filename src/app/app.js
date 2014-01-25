@@ -13,17 +13,18 @@ angular.module('openqi', [
 
     /* other modules */
     'angular-growl',
+    'api.openqi',
     
     /* app specific */
-    
+    'openqi.dashboard',
+    'openqi.project'
 
 ])
 
     .config(function myAppConfig($stateProvider, $urlRouterProvider, $locationProvider, growlProvider, $httpProvider) {
         
         // $urlRouter
-        $urlRouterProvider.otherwise('/'); // default page
-        //$locationProvider.html5Mode(true);
+        $urlRouterProvider.otherwise('/dashboard'); // default page
         
         // growl
         growlProvider.globalTimeToLive(5000);
@@ -40,6 +41,35 @@ angular.module('openqi', [
             }
 
         });
+
+
+        // main menu
+        $scope.mainMenuItems = [
+            {
+                'name': 'Dashboard',
+                'url': '/dashboard'
+            },
+            {
+                'name': 'Projects',
+                'url': '/project'
+            }
+        ];
+
+        // account menu
+        $scope.accountMenuItems = [
+            {
+                'name': 'Profile',
+                'url': ''
+            },
+            {
+                'name': 'My Drafts',
+                'url': ''
+            },
+            {
+                'name': 'My Projects',
+                'url': ''
+            }
+        ];
         
     })
 

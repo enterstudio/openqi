@@ -39,17 +39,7 @@ input[type="checkbox"] {margin: 9px 0 0;}
    GLOBALS
 \*------------------------------------*/
 body, html {background-color: #dbdce1;}
-.container {max-width: 100%; width: 100%; margin-top: 80px;}
-
-.non-selectable {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: default;
-}
+.container {max-width: 100%; width: 100%;}
 
 .panel-heading {text-transform: capitalize;}
 .panel-footer {text-align: center;}
@@ -62,10 +52,40 @@ body, html {background-color: #dbdce1;}
    STRUCTURE
 \*------------------------------------*/
 
+/* header */
+header {height: 40px; background: #333; color: #fff; line-height: 40px; margin-bottom: 20px;}
+    
+    header .logo {padding-left: 10px;}
 
+    header .navbar {
+        text-align: center; 
+        height: 40px; 
+        border: 0px; 
+        min-height: 40px; 
+        background: #333;
+        color: #fff;
+        border-radius: 0px;
+        margin: 0px;
+    }
+        header .navbar .nav {margin: 0px auto; display: inline-block; float: none;}
+            header .navbar .nav .nav-item {}
+                header .navbar .nav .nav-item > a {padding: 10px 15px;}
+                    header .navbar .nav .nav-item > a:hover {color: #333; background: #fff;}
+                    header .navbar .nav .nav-item.active > a {color: #333; background: #fff;}
+    
+    header .settings {
+        background: transparent;
+        border: 0px;
+        border-radius: 0px;
+        height: 40px;
+        color: #fff;
+    }
+            
+    header .user {}
+        header .user img {width: 40px; height: 40px;}
 
 /* footer */
-footer {text-align: center; height: 40px; line-height: 40px; vertical-align: middle;
+footer {text-align: center; height: 40px; line-height: 40px; vertical-align: middle;}
 
 
 /*------------------------------------*\
@@ -79,6 +99,11 @@ footer {text-align: center; height: 40px; line-height: 40px; vertical-align: mid
    MODULE SPECIFIC
 \*------------------------------------*/
 
+/* dashboard */
+@import '../app/dashboard/dashboard.less';
+
+/* projects */
+@import '../app/project/project.less';
 
 /*------------------------------------*\
    MODULE COMMON

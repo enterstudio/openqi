@@ -27,7 +27,34 @@
         <!-- header -->
         <header>
             <div class="row">
+                <div class="col-md-2">
+                    <div class="logo">Open QI</div>
+                </div>
+                <div class="menu col-md-8">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item" ng-repeat="item in mainMenuItems" ui-route="{{item.url}}" ng-class="{active: $uiRoute}">
+                                <a href="/#{{item.url}}" ng-cloak>{{item.name}}</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-2">
+                    <div class="user pull-right dropdown-toggle" data-toggle="dropdown">
+                        <img alt="" src="assets/images/user.jpg">
+                    </div>
 
+                    <a class="btn btn-default settings pull-right dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-2x fa-cog"></i>
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu pull-right" role="menu">
+                        <li ng-repeat="item in accountMenuItems" ui-route="{{item.url}}" ng-class="{active: $uiRoute}">
+                            <a href="/#{{item.url}}">{{item.name}}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </header>
         <!-- !header -->
@@ -43,9 +70,12 @@
         <!-- !footer -->
         
         <!-- javascript -->
-        <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script><script type="text/javascript" src="vendor/jquery-ui/ui/minified/jquery-ui.min.js"></script><script type="text/javascript" src="vendor/angular/angular.js"></script><script type="text/javascript" src="vendor/angular-animate/angular-animate.min.js"></script><script type="text/javascript" src="vendor/angular-resource/angular-resource.min.js"></script><script type="text/javascript" src="vendor/angular-growl/build/angular-growl.min.js"></script><script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script><script type="text/javascript" src="vendor/angular-ui-utils/ui-utils.js"></script><script type="text/javascript" src="vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js"></script><script type="text/javascript" src="vendor/momentjs/min/moment.min.js"></script><script type="text/javascript" src="src/app/app.js"></script><script type="text/javascript" src="templates-common.js"></script><script type="text/javascript" src="templates-app.js"></script>
+        <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script><script type="text/javascript" src="vendor/jquery-ui/ui/minified/jquery-ui.min.js"></script><script type="text/javascript" src="vendor/angular/angular.js"></script><script type="text/javascript" src="vendor/angular-animate/angular-animate.min.js"></script><script type="text/javascript" src="vendor/angular-resource/angular-resource.min.js"></script><script type="text/javascript" src="vendor/angular-growl/build/angular-growl.min.js"></script><script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script><script type="text/javascript" src="vendor/angular-ui-utils/ui-utils.js"></script><script type="text/javascript" src="vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js"></script><script type="text/javascript" src="vendor/momentjs/min/moment.min.js"></script><script type="text/javascript" src="src/app/app.js"></script><script type="text/javascript" src="src/app/dashboard/dashboard.js"></script><script type="text/javascript" src="src/app/project/configure/openqi.project.configure.js"></script><script type="text/javascript" src="src/app/project/project.js"></script><script type="text/javascript" src="src/common/api.openqi/api.openqi.js"></script><script type="text/javascript" src="templates-common.js"></script><script type="text/javascript" src="templates-app.js"></script>
         <!-- !javascript -->
 
     </body>
 
 </html>
+
+
+

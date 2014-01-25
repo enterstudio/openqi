@@ -1,0 +1,31 @@
+
+
+<div class="col-md-12">
+	<div class="panel panel-default">
+		<div class="panel-heading">All Projects</div>	
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-12 col-md-3">
+					<input type="text" class="form-control" placeholder="Search..." ng-model="filter.query">
+				</div>
+				<div class="add-item-panel col-sm-12 col-md-9">
+					<a class="btn btn-success pull-right" title="Add" ui-sref="project.add" href="#/add">Add new Project</a>
+				</div>
+			</div>
+		</div>
+
+		<ul class="item-list list-group">
+			<li 
+				ng-repeat="item in projects | filter: filter.query"
+				class="list-group-item">
+					<span ng-if="item.title">{{item.title}}</span>
+					<span class="item-menu pull-right visible-xs">
+						<a class="btn btn-xs btn-warning" title="Edit" ng-click="selectItem(item)" ui-sref="project.edit" href="#/edit"><i class="fa fa-pencil"></i></a>
+						<a class="btn btn-xs btn-danger" title="Delete" ng-click="selectItem(item)" ui-sref="project.delete" href="#/delete"><i class="fa fa-trash-o"></i></a>
+					</span>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
