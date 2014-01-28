@@ -1,0 +1,132 @@
+.jumbotron h1 {
+	font-size: 126px;
+	text-align:center;
+	 background-color: #565656;
+	 color: transparent;
+	 text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+	  -webkit-background-clip: text;
+		 -moz-background-clip: text;
+		      background-clip: text;
+	margin-bottom:0px;
+}
+
+.jumbotron {
+	text-align:center;
+	padding-top:0px;
+}
+
+h3 {
+	text-align:center;
+	margin-top: 0px;
+	margin-bottom:40px;
+}
+
+img {
+	align:middle;
+	max-width:390px;
+	max-height:200px;
+}
+
+.marketing {
+	text-align:center;
+}
+
+.bar {;
+	text-align:center;
+	margin-top:-60px;
+	background-color:rgb(197, 214, 245);
+	font-size:20px;
+	padding:10px;
+	word-spacing: 40px;
+	margin-bottom:20px;
+}
+
+.bar a {
+	cursor:pointer;
+	text-decoration: none;
+	color:rgb(80, 92, 112);
+	font-size:24px;
+}
+
+.bar a:hover{
+	color:white;
+}
+
+.navbar-default {
+	background-color: blue;
+	border-color: #e7e7e7;
+
+}
+
+h4 {
+	padding:20px;
+	margin-bottom:0px;
+}
+
+a {
+	color:black;
+}
+
+.login {
+	background-color:#eeeeee;
+	padding-top:20px;
+	padding-right:20px;
+	text-align:right;
+}
+
+.login_non_button {
+	text-decoration: none;
+	color:#39b3d7;
+	cursor: pointer;
+}
+
+.login_non_button:hover {
+	color:#269abc;
+	text-decoration: none;
+}
+
+
+* {
+	margin: 0;
+}
+html, body {
+	height: 100%;
+}
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+	height: 155px; /* .push must be the same height as .footer */
+}
+
+.links {
+	margin-top:30px;
+
+}
+
+.link {
+	text-align:center;
+	font-size:20px;
+	height:250px;
+	width:250px;
+	padding:10px;
+	background-color:rgb(197, 214, 245);
+}
+
+.link h3 {
+	color:white;
+}
+
+.link p {
+	color: rgb(40, 40, 85);
+}
+
+/*
+
+Sticky Footer by Ryan Fait
+http://ryanfait.com/
+
+*/

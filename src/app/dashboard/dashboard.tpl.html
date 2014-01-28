@@ -1,9 +1,45 @@
 
-
-<div class="col-md-12">
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<p>Dashboard tester</p>
+<div class="row">
+	<div class="col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<label><i class="fa fa-user"></i> My Projects</label>
+			</div>
+			<ul class="item-list list-group">
+				<li 
+					ng-click="goToItem(item)"
+					ng-repeat="item in myProjects"
+					class="list-group-item">
+						<span ng-if="item.title">{{item.title}}</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<label><i class="fa fa-users"></i> Local Projects</label>
+			</div>
+			<ul class="item-list list-group">
+				<li 
+					ng-click="goToItem(item)"
+					ng-repeat="item in localProjects"
+					class="list-group-item">
+						<span ng-if="item.title">{{item.title}}</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<label>Notifications</label>
+				<small ng-hide="notifications.length > 0">No notifications at the moment.</small>
+				<div class="notify-count pull-right">{{notifications.length}}</div>
+				<ul class="list-unstyled notifications">
+					<li ng-repeat="notification in notifications"><span class="pull-left"><img alt="" ng-src="assets/images/user{{notification.user.ID}}.jpeg"></span> <strong>{{notification.user.name}}</strong> {{notification.name}}</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>

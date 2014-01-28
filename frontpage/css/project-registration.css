@@ -1,0 +1,29 @@
+.project-description {
+	height: 1000px;
+	width: 1000px;
+	margin-bottom:50px;
+	font-size: 28px;
+}
+
+.heading {
+	font-size:36px;
+}
+
+.page-navigation{
+	text-align: center;
+}
+
+.outcomes {
+
+}
+
+.interventions{
+
+}
+
+.description {
+	background-color:rgb(98, 174, 235);
+	color:white;
+	font-size:24px;
+	padding:10px;
+}

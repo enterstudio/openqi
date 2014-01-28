@@ -16,6 +16,7 @@ angular.module('openqi', [
     'api.openqi',
     
     /* app specific */
+    'openqi.login',
     'openqi.dashboard',
     'openqi.project'
 
@@ -30,7 +31,18 @@ angular.module('openqi', [
         growlProvider.globalTimeToLive(5000);
     })
 
-    .controller('AppCtrl', function AppCtrl($scope) {
+    .controller('AppCtrl', function AppCtrl($scope, $state) {
+
+        $scope.authentication = {
+            'loggedIn': true,
+            'prompt': false,
+            'user': {
+                'ID': 1,
+                'area': {
+                    'ID': 1
+                }
+            }
+        };
         
         // handle page title
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
@@ -40,8 +52,11 @@ angular.module('openqi', [
                 $scope.pageTitle = toState.data.pageTitle;
             }
 
-        });
+            if ($scope.authentication.loggedIn && toState.name == 'login') {
+                $state.go('dashboard');
+            }
 
+        });
 
         // main menu
         $scope.mainMenuItems = [
@@ -70,7 +85,69 @@ angular.module('openqi', [
                 'url': ''
             }
         ];
-        
-    })
 
+        $scope.notifications = [
+            {
+                'name': 'added a comment to your project',
+                'user': {
+                    'ID': 2,
+                    'name': 'Dr Jo Carter'
+                }
+            },
+            {
+                'name': 'viewed your project',
+                'user': {
+                    'ID': 3,
+                    'name': 'Ron Seal'
+                }
+            },
+            {
+                'name': 'accepted your project',
+                'user': {
+                    'ID': 5,
+                    'name': 'Dr Garth Speel'
+                }
+            }
+        ];
+
+        $scope.comments = [
+        ];
+
+        // project
+        $scope.project = {
+            'current': {
+                'item': {}
+            }
+        };
+
+        $scope.goToItem = function(item) {
+            item.users = [{'ID': 4, 'name': 'Tester'}, {'ID': 3, 'name': 'Tester'}, {'ID': 2, 'name': 'Tester'}];
+            $scope.project.current.item = item;
+
+            console.debug(item);
+            $state.go('project.item');
+        };
+    })
+    
+    .factory('CombineFactory', function() {
+        return {
+            projects: function(array) {
+                var uniqueProjects = [];
+                var uniqueItems = [];
+                angular.forEach(array, function(item) {
+                    angular.forEach(array, function(subItem) {
+                        item.users = [];
+                        if (subItem.ID == item.ID) {
+                            item.users.push(subItem.user);
+                        }
+                    });
+                    if (uniqueProjects.indexOf(item.ID) == -1) {
+                        uniqueProjects.push(item.ID);
+                        uniqueItems.push(item);
+                    }
+                });
+                return uniqueItems;
+            }
+        };
+    })
     ;

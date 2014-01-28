@@ -9,8 +9,8 @@ angular.module('api.openqi', [
 ])
 
 	.factory('API', function ($resource, $q, ErrorHandlingFactory) {
-		var API = $resource('http://api.openqi/api/:type/:user/:userID/:ID', 
-			{type: '@type', userID: '@userID', ID: '@ID', user: '@user'},
+		var API = $resource('http://api.openqi/api/:type/:filter/:filterID/:ID', 
+			{type: '@type', filterID: '@userID', ID: '@ID', filter: '@user'},
 			{
 				'get': {method: 'GET'},
 				'add': {method: 'POST'},

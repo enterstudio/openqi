@@ -26,9 +26,17 @@ $app->get('/api/:type/:id', function($type,$id) use ($app) {
 /* 
 GET :type/user/:user - Returns a list of objects of the :type for a particular :user
 */
-$app->get('/api/projects/user/:userID', function($type,$userID) use ($app) {
+$app->get('/api/:type/user/:userID', function($type,$userID) use ($app) {
 	$response = array("status"=>"OK");
 	echo respondAs($app, getTypeByUser($app,$type,$userID,$response), $app->request->get('format'));
+});
+
+/* 
+GET :type/area/:rea - Returns a list of projects for a particular :area
+*/
+$app->get('/api/project/area/:areaID', function($areaID) use ($app) {
+	$response = array("status"=>"OK");
+	echo respondAs($app, getTypeByArea($app,'project',$areaID,$response), $app->request->get('format'));
 });
 
 /* 
@@ -127,6 +135,38 @@ function getTypeByUser($app,$type,$user,$response) {
 
 	if(array_key_exists($type."_getbyuser", $qryLibrary)) {
 		$result = query($qryLibrary[$type."_getbyuser"]["SQL"], array(":userID"=>$user));
+
+		if($result->return && $result->stmt) {
+			if(isset($t[$types[$type]])) {
+				$response['data'] = array();
+				$rows = $result->stmt->fetchAll();
+
+				foreach($rows as $e) {
+					$row = organiseData($e,$type);
+					array_push($response['data'], $row);
+				}	
+			}
+		}
+		else {
+			$response["status"] = "Error";
+			$response["message"] = "Failed to retrieve data";
+		}
+	}
+	else {
+		$response["status"] = "Error";
+		$response["message"] = "Invalid API call";
+	}
+
+	return $response;
+}
+
+function getTypeByArea($app,$type,$area,$response) {
+	global $qryLibrary;
+	global $t;
+	global $types;
+
+	if(array_key_exists($type."_getbyarea", $qryLibrary)) {
+		$result = query($qryLibrary[$type."_getbyarea"]["SQL"], array(":areaID"=>$area));
 
 		if($result->return && $result->stmt) {
 			if(isset($t[$types[$type]])) {

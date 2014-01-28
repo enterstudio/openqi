@@ -25,7 +25,7 @@
         <!-- !growls -->
 
         <!-- header -->
-        <header>
+        <header ng-if="authentication.loggedIn">
             <div class="row">
                 <div class="col-md-2">
                     <div class="logo">Open QI</div>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-md-2">
                     <div class="user pull-right dropdown-toggle" data-toggle="dropdown">
-                        <img alt="" src="assets/images/user.jpg">
+                        <img alt="" ng-src="assets/images/user{{authentication.user.ID}}.jpeg">
                     </div>
 
                     <a class="btn btn-default settings pull-right dropdown-toggle" data-toggle="dropdown">
@@ -64,7 +64,7 @@
         <!-- !view -->
         
         <!-- footer -->
-        <footer>
+        <footer ng-if="authentication.loggedIn">
             <small>Copyright &copy; OpenQI 2013</small>
         </footer>
         <!-- !footer -->

@@ -1,0 +1,75 @@
+
+<div class="col-md-3">
+	<div class="panel panel-default">
+		<div class="panel-heading">Active Contributers</div>
+		<div class="panel-body">
+			<div ng-hide="project.current.item.users.length > 0">No active contributers.</div>
+			<ul class="list-unstyled project-users" ng-if="project.current.item.users.length > 0">
+				<li ng-repeat="user in project.current.item.users" title="{{user.name}}">
+					<img alt="" ng-src="assets/images/user{{user.ID}}.jpeg">
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<div class="col-md-6">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h2>{{project.current.item.title}}</h2>
+	
+			<h3>1. General</h3>
+			<hr>
+			<h4>1.1. Aims</h4>
+			<p>{{project.current.item.aims}}</p>
+			<br>
+			<h4>1.2. Outcomes</h4>
+			<p>{{project.current.item.outcomes}}</p>
+
+			<h3>2. Method</h3>
+			<hr>
+			<h4>2.1. Method Type</h4>
+			<p>{{project.current.item.methodtype}}</p>
+			<br>	
+			<h4>2.2. Population</h4>
+			<p>{{project.current.item.population}}</p>
+
+			<h4>2.3. Population Size</h4>
+			<p>{{project.current.item.populationsize}}</p>
+			<br>
+			<h4>2.4. Data Collection Start</h4>
+			<p>{{project.current.item.datastart}}</p>
+			<br>
+			<h4>2.5. Data Collection End</h4>
+			<p>{{project.current.item.dataend}}</p>
+
+			<br/>
+			<br/>
+			<small>Proposed start date: {{project.current.item.startdate}}</small>
+			<small>Audit Lead: {{project.current.item.user.name}}</small>
+
+		</div>
+	</div>
+</div>
+<div class="col-md-3">
+	<div class="panel panel-default">
+		<div class="panel-heading">Comments</div>
+		<div class="panel-body" ng-hide="comments.length > 0">No comments at the moment.</div>
+		<ul class="item-list list-group">
+				<li 
+					ng-repeat="comment in comments"
+					class="list-group-item comments">
+						<span><img alt="" ng-src="assets/images/user{{comment.user.ID}}.jpeg"></span></span> {{comment.message}}
+				</li>
+			</ul>
+		<div class="panel-footer">
+			<div class="input-group">
+		      <input type="text" class="form-control" ng-model="message">
+		      <span class="input-group-btn">
+		      	<button type="button" class="btn btn-primary" ng-click="addComment(message); message = '';" ng-disabled="!message.length">Add comment</button>
+		      </span>
+		    </div><!-- /input-group -->
+		</div>
+	</div>
+</div>

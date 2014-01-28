@@ -6,14 +6,16 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 $db = new PDO('mysql:host=localhost;dbname=openqi;charset=utf8', 'openqi', 'socks'); //
 $t = array();
-$t["u"] = array("name" => "user", "keys" => null, "joins" => array("pu" => &$t["pu"], "p" => &$t["p"], "pa" => &$t["pa"], "a" => &$t["a"], "u" => &$t["u"]), "m2m" => false, "plural" => "users");
+$t["u"] = array("name" => "user", "keys" => null, "joins" => array("pu" => &$t["pu"], "p" => &$t["p"], "pa" => &$t["pa"], "a" => &$t["a"], "u" => &$t["u"], "g" => &$t["g"]), "m2m" => false, "plural" => "users");
+$t["g"] = array("name" => "group", "keys" => null, "joins" => array("u" => &$t["u"]), "m2m" => false, "plural" => "groups");
 $t["p"] = array("name" => "project", "keys" => null, "joins" => array("pu" => &$t["pu"], "p" => &$t["p"], "pa" => &$t["pa"], "a" => &$t["a"]), "m2m" => false, "plural" => "projects");
 $t["a"] = array("name" => "area", "keys" => null, "joins" => array("pu" => &$t["pu"], "u" => &$t["p"], "pa" => &$t["pa"], "a" => &$t["a"]), "m2m" => false, "plural" => "areas");
-$t["pu"] = array("name" => "projectarea", "keys" => array("p","a"), "joins" => array("p" => &$t["p"], "u" => &$t["u"]), "m2m" => true, "plural" => "projectusers");
+$t["pu"] = array("name" => "projectarea", "keys" => array("p","u"), "joins" => array("p" => &$t["p"], "u" => &$t["u"]), "m2m" => true, "plural" => "projectusers");
 $t["pa"] = array("name" => "projectbudget", "keys" => array("p","a"), "joins" => array("p" => &$t["p"], "a" => &$t["a"]), "m2m" => true, "plural" => "projectareas");
 
 $types = array();
 $types["user"] = "u";
+$types["group"] = "g";
 $types["project"] = "p";
 $types["area"] = "a";
 $types["projectarea"] = "pa";
@@ -167,33 +169,23 @@ $qryLibrary = array();
 
 /* project */
 $qryLibrary["project_get"] = 		array(
-									"SQL"		=>	"SELECT p.ID, p.title, p.subtitle, a.ID as 'areaID', a.name as 'areaname', u.ID as 'userID', u.email as 'useremail', CONCAT(u.firstname,' ',u.lastname) as 'username' from project p left outer join projectarea pa on(p.ID = pa.projectID) left outer join area a on(pa.areaID = a.ID) left outer join projectuser pu on(p.ID = pu.projectID) left outer join user u on(pu.userID = u.ID)",
+									"SQL"		=>	"SELECT p.ID, p.title, p.aims, p.outcomes, p.accepted, p.population, p.populationsize, p.methodtype, p.datastart, p.dataend, p.startdate, p.enddate, p.auditleadID, a.ID as 'areaID', a.name as 'areaname', u.ID as 'userID', u.email as 'useremail', CONCAT(u.firstname,' ',u.lastname) as 'username', g.ID as 'groupID', g.name as 'groupname' from project p left outer join projectarea pa on(p.ID = pa.projectID) left outer join area a on(pa.areaID = a.ID) left outer join projectuser pu on(p.ID = pu.projectID) left outer join `user` u on(pu.userID = u.ID) left outer join `group` g on(g.ID = u.groupID)",
 									"params"	=>	array(),
 									"public"	=>	true
 								);
-$qryLibrary["project_getbyID"] = array(
-									"SQL"		=>	"SELECT p.ID, p.title, p.subtitle, a.ID as 'areaID', a.name as 'areaname', u.ID as 'userID', u.email as 'useremail', CONCAT(u.firstname,' ',u.lastname) as 'username' from project p left outer join projectarea pa on(p.ID = pa.projectID) left outer join area a on(pa.areaID = a.ID) left outer join projectuser pu on(p.ID = pu.projectID) left outer join user u on(pu.userID = u.ID) where p.ID = :ID",
+$qryLibrary["project_getbyuser"] = array(
+									"SQL"		=>	"SELECT p.ID, p.title, p.aims, p.outcomes, p.accepted, p.population, p.populationsize, p.methodtype, p.datastart, p.dataend, p.startdate, p.enddate, p.auditleadID, a.ID as 'areaID', a.name as 'areaname', u.ID as 'userID', u.email as 'useremail', CONCAT(u.firstname,' ',u.lastname) as 'username', g.ID as 'groupID', g.name as 'groupname' from project p left outer join projectarea pa on(p.ID = pa.projectID) left outer join area a on(pa.areaID = a.ID) left outer join projectuser pu on(p.ID = pu.projectID) left outer join `user` u on(pu.userID = u.ID) left outer join `group` g on(g.ID = u.groupID) WHERE u.ID = :userID",
+									"params"	=>	array("ID"=>array("Type"=>"int","ParamType"=>"url")),
+									"public"	=>	true
+								);
+$qryLibrary["project_getbyarea"] = array(
+									"SQL"		=>	"SELECT p.ID, p.title, p.aims, p.outcomes, p.accepted, p.population, p.populationsize, p.methodtype, p.datastart, p.dataend, p.startdate, p.enddate, p.auditleadID, a.ID as 'areaID', a.name as 'areaname', u.ID as 'userID', u.email as 'useremail', CONCAT(u.firstname,' ',u.lastname) as 'username', g.ID as 'groupID', g.name as 'groupname' from project p left outer join projectarea pa on(p.ID = pa.projectID) left outer join area a on(pa.areaID = a.ID) left outer join projectuser pu on(p.ID = pu.projectID) left outer join `user` u on(pu.userID = u.ID) left outer join `group` g on(g.ID = u.groupID) WHERE a.ID = :areaID",
 									"params"	=>	array("ID"=>array("Type"=>"int","ParamType"=>"url")),
 									"public"	=>	true
 								);
 $qryLibrary["project_add"] = 		array(
-									"SQL"		=>	"INSERT INTO budget SET Name = :name, categoryID = :categoryID; SELECT LAST_INSERT_ID() as ID",
+									"SQL"		=>	"INSERT INTO project SET title = :title, aims = :aims, outcomes = :outcomes, accepted = 0, population = :population, populationsize = :popultionsize, methodtype = :methodtype, datastart = :datastart, dataend = :dataend, startdate = :startdate, enddate = :enddate, auditleadID = :auditleadID; SELECT LAST_INSERT_ID() as ID",
 									"params"	=>	array("name"=>array("Type"=>"string","ParamType"=>""),	"categoryID"=>array("Type"=>"int","ParamType"=>"")),
-									"public"	=>	true
-								);
-$qryLibrary["project_edit"] = 	array(
-									"SQL"		=>	"UPDATE budget SET Name = :name, categoryID = :categoryID, Deleted = 0 WHERE ID = :ID",
-									"params"	=>	array("ID"=>array("Type"=>"int","ParamType"=>"url"))	,
-									"public"	=>	true
-								);
-$qryLibrary["project_delete"] =	array(
-									"SQL"		=>	"UPDATE budget SET Deleted = 1 where ID = :ID",
-									"params"	=>	array("ID"=>array("Type"=>"int","ParamType"=>"url")),
-									"public"	=>	true
-								);
-$qryLibrary["project_replace"] = array(
-									"SQL"		=>	"DELETE FROM budgettask where budgetID = :oldID; UPDATE entry e set budgetID = :newID where budgetID = :oldID",
-									"params"	=> array("oldID"=>array("Type"=>"int","ParamType"=>""),"newID"=>array("Type"=>"int","ParamType"=>"")),
 									"public"	=>	true
 								);
 
@@ -204,31 +196,20 @@ $qryLibrary["area_get"] = 	array(
 									"params"	=>	array(),
 									"public"	=>	true
 								);
-$qryLibrary["area_add"] = 	array(
-									"SQL"		=>	"INSERT INTO task SET Name = :name, Deleted = 0; SELECT LAST_INSERT_ID() as ID;",
-									"params"	=>	array("name"=>array("Type"=>"string","ParamType"=>"")),
+
+/* group */
+
+$qryLibrary["group_get"] = 	array(
+									"SQL"		=>	"SELECT g.ID, g.name from `group` g",
+									"params"	=>	array(),
 									"public"	=>	true
 								);
-$qryLibrary["area_edit"] = 	array(
-									"SQL"		=>	"UPDATE task SET Name = :name, Deleted = 0 WHERE ID = :ID",
-									"params"	=>	array("name"=>array("Type"=>"string","ParamType"=>"")),
-									"public"	=>	true
-								);
-$qryLibrary["area_delete"] = 	array(
-									"SQL"		=>	"UPDATE task SET Deleted = 1 where ID = :ID",
-									"params"	=>	array("ID"=>array("Type"=>"int","ParamType"=>"url")),
-									"public"	=>	true
-								);
-$qryLibrary["area_replace"] = 	array(
-									"SQL"		=>	"DELETE from budgettask WHERE taskID = :oldID; UPDATE entry e set taskID = :newID where taskID = :oldID",
-									"params"	=>	array("oldID"=>array("Type"=>"int","ParamType"=>""),	"newID"=>array("Type"=>"int","ParamType"=>"url")),
-									"public"	=>	true
-								);
+
 
 /* users */
 
 $qryLibrary["user_get"] = 	array(
-									"SQL"		=>	"SELECT u.ID, u.email, CONCAT(u.firstname,' ',u.lastname) as 'name' from user u",
+									"SQL"		=>	"SELECT u.ID, u.email, CONCAT(u.firstname,' ',u.lastname) as 'name', u.password, a.ID as 'areaID', a.name as 'areaname', g.ID as 'groupID', g.name as 'groupname' from `user` u left outer join `group` g on(g.ID = u.groupID) left outer join area a on(a.ID = u.areaID)",
 									"params"	=>	array(),
 									"public"	=>	true
 								);

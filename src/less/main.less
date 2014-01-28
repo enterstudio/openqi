@@ -38,7 +38,7 @@ input[type="checkbox"] {margin: 9px 0 0;}
 /*------------------------------------*\
    GLOBALS
 \*------------------------------------*/
-body, html {background-color: #dbdce1;}
+body, html {background-color: #dbdce1; width: 100%;}
 .container {max-width: 100%; width: 100%;}
 
 .panel-heading {text-transform: capitalize;}
@@ -88,6 +88,14 @@ header {height: 40px; background: #333; color: #fff; line-height: 40px; margin-b
 footer {text-align: center; height: 40px; line-height: 40px; vertical-align: middle;}
 
 
+
+.notifications li {height: 20px; margin-bottom: 10px;}
+    .notifications img {height: 20px; width: 20px; margin-right: 5px; border-radius: 100%;}
+.notify-count {background-color: red; opacity: 0.6; width: 20px; color: #fff; display: inline-block; text-align: center;}
+
+
+.comments img {height: 40px; width: 40px; border-radius: 100%; margin-right: 5px;}
+
 /*------------------------------------*\
    ANIMATIONS
 \*------------------------------------*/
@@ -104,6 +112,11 @@ footer {text-align: center; height: 40px; line-height: 40px; vertical-align: mid
 
 /* projects */
 @import '../app/project/project.less';
+
+/* login */
+@import '../app/login/login.less';
+
+
 
 /*------------------------------------*\
    MODULE COMMON

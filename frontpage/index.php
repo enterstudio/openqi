@@ -1,40 +1,39 @@
-<!DOCTYPE html>
+<?php include("templates/header.php"); ?>
 
-<html>
-
-	<head>
-		<title>Open Audit Database</title>
-    
-	</head>
-	
-	<body>
 	<div class="login">
-		<button class="btn btn-info">Login</button>
-		<button class="btn btn-info">Sign up</button>
+		<a class="btn btn-info" href="http://app.openqi/">Login</a>
+		<a class="btn btn-info" href="register.php">Register</a>
+		<a class="btn btn-info" href="project_page1.php">Start New Audit</a>
 	</div>
 		<div class="jumbotron">
 		  <div class="container">
 
 		  	
-		    <h1 class="inset-text">Open Audit</h1>
-		    <h3>D A T A B A S E</h3>
+		    <h1 class="inset-text">Open QI<img src="/img/QI.png"></h1>
+		    <h4>A Quality Improvement Collaboration Tool</h4>
 		    
 		    <form id="target" class="form-inline" role="form" action="search.php" action="get">
 		    	<div class="form-group">
-		    		<input type="text" name="input" class="input-lg form-control">
+		    		<input type="text" name="input" class="input-lg form-control" placeholder="Type in keywords here">
 		   		</div>
 		   		
 		   		<div class="form-group">
-		   			<a id="search_button" class="btn btn-primary btn-lg">Search &raquo;</a> or <a href="new_audit.php" id="new_button" class="btn btn-success btn-lg">Start a new audit</a>
+		   			<a id="search_button" class="btn btn-primary btn-lg">Search &raquo;</a> or <a href="new_audit.php" id="new_button" class="btn btn-success btn-lg">Browse by Speciality</a>
 		   		</div>
 		   	</form>
-		  </div>
+		   	<div><a class="login_non_button" href="http://app.openqi/"><h4>Log in</a> to start a new project</div>
+		  </div></h4>
 		</div>
 
-	<div class="bar">
-		<h4><a href="#">Find out more about the project</a></h4>
-	</div>
-	
+<!--NAV BAR -->
+<div class="bar">
+	<a href="about.php">About | </a>
+	<a href="resources.php">Resources | </a> 
+	<a href="resources.php">Help | </a>
+	<a href="resources.php">Contact</a>
+</div>
+
+
 	<div class="container marketing">
 
       <!-- Three columns of text below the carousel -->
@@ -59,10 +58,32 @@
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
 
+
+
+
+    <!--LOG IN MODAL-->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
     </div><!-- /.container -->
 
+
+
+
 	
-	</body>
-
-
-</html>
+<?php include("templates/footer.php"); ?>
