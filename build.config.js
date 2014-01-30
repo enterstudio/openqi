@@ -72,7 +72,6 @@ module.exports = {
             'vendor/angular-loading-bar/build/loading-bar.js'
         ],
         css: [
-            'vendor/fullcalendar/fullcalendar.css',
             'vendor/angular-growl/build/angular-growl.min.css',
             'vendor/angular-loading-bar/build/loading-bar.min.css'
         ],
