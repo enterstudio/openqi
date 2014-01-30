@@ -8,14 +8,14 @@
     "angular-animate": "1.2.7",
     "angular-resource": "1.2.7",
     "bootstrap": "latest",
-    "angular-ui-router": "latest",
+    "angular-ui-router": "0.2.7",
+    "angular-ui-utils": "latest",
     "font-awesome": "latest",
     "angular-growl": "latest",
     "momentjs": "latest"
   },
   "dependencies": {},
   "resolutions": {
-    "jquery": "~1.10.x",
     "angular": "1.2.7"
   }
 }
